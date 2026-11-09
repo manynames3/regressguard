@@ -54,6 +54,8 @@ jobs:
       - run: uv sync --locked
       - run: uv run --no-sync ruff check .
       - run: uv run --no-sync pytest -q
+      - name: Exercise client and webhook over loopback HTTP
+        run: uv run --no-sync python -m demo.transport_smoke
       - name: Measure held-out evaluator behavior
         run: uv run --no-sync python -m demo.calibrate
       - name: Preserve calibration evidence
