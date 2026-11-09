@@ -1,0 +1,28 @@
+{% extends "base.html" %}{% block content %}
+<div class="intro"><div><p class="eyebrow">RELEASE CONFIDENCE</p><h1>See what changed.<br>Catch what broke.</h1>
+<p>Compare repeated evaluations against an accepted baseline.</p></div>
+<form method="get"><label for="suite">Feature</label><select id="suite" name="suite" onchange="this.form.submit()">
+{% for s in suites %}<option value="{{ s.id }}" {% if chosen == s.id %}selected{% endif %}>{{ s.name }}</option>{% endfor %}</select>
+<button type="button" id="run" data-suite="{{ chosen }}">Run evaluation</button>
+<label><input type="checkbox" id="reference"> Collect reference without a baseline</label>
+<p id="status" role="status"></p></form></div>
+{% for s in suites if s.id == chosen %}<p>Accepted baseline <code>{{ s.baseline or "None — collect a reference and promote it" }}</code>
+· {{ s.cases }} cases · {{ s.critical }} critical</p>{% endfor %}
+<section><h2>Pass-rate trend</h2>
+<canvas id="trend" data-baseline="{% for s in suites if s.id == chosen %}{{ s.baseline or '' }}{% endfor %}" height="130" aria-label="Aggregate pass-rate trend. Values available in run history." role="img"></canvas>
+<script id="trend-data" type="application/json">{{ runs|reverse|list|tojson }}</script>
+</section>
+{% if runs %}{% set r = runs[0] %}
+<section><div class="row"><h2>Latest report</h2><span class="verdict {{ r.verdict }}">{{ r.verdict }}</span></div>
+<h3>{{ r.reason or "Run interrupted or executing" }}</h3>
+<p>{{ "%.2f"|format(r.aggregate_score) if r.aggregate_score is defined else "—" }} / 100
+· {{ r.comparison or "Incomplete" }} · {{ r.target.model }}</p>
+<a href="/runs/{{ r.id }}">Inspect evidence →</a></section>
+{% endif %}
+<section><h2>Run history & version timeline</h2>
+{% if runs %}<div class="table"><table><thead><tr><th>Run / timestamp</th><th>Verdict</th><th>Pass rate</th><th>Prompt</th><th>Model</th><th>Contract</th></tr></thead>
+<tbody>{% for r in runs %}<tr><td><a href="/runs/{{ r.id }}">{{ r.id[:8] }}</a><small>{{ r.timestamp }}</small></td>
+<td><span class="verdict {{ r.verdict }}">{{ r.verdict }}</span></td><td>{{ "%.2f"|format(r.aggregate_score) if r.aggregate_score is defined else "—" }}%</td>
+<td>{{ r.target.prompt_version }}</td><td>{{ r.target.model }}</td><td><code>{{ r.contract_hash[:8] }}</code></td></tr>{% endfor %}</tbody></table></div>
+{% else %}<p>No runs yet. Run an evaluation to collect the first observations.</p>{% endif %}
+</section>{% endblock %}

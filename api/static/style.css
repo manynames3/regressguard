@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+:root{font-family:"DM Sans",system-ui,sans-serif;color:#182c39;background:#f3f5f3;line-height:1.55}
+*{box-sizing:border-box}body{margin:0}header,main,footer{max-width:1180px;margin:auto;padding:24px 32px}
+header{display:flex;align-items:center;gap:24px;border-bottom:1px solid #d7ded9}header span,small,footer{color:#61736d}
+.brand{font-size:23px;font-weight:700;color:#173e32;text-decoration:none}h1{font-size:44px;line-height:1.15;letter-spacing:-1.6px}h2{font-size:21px;margin-top:0}
+.eyebrow{font-size:12px;letter-spacing:2px;color:#47695a;font-weight:700}.intro{display:flex;gap:40px;align-items:center;justify-content:space-between;padding:35px 0}
+.intro form{min-width:300px;display:grid;gap:12px;background:#e6ede7;padding:24px;border-radius:12px}
+button,select{font:inherit;padding:11px 16px;border-radius:6px;border:1px solid #b7c6bd}button{background:#1d5c46;color:white;cursor:pointer}button:disabled{opacity:.5}
+section{background:#fff;border:1px solid #dde3de;border-radius:10px;padding:24px;margin:20px 0}.row{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.verdict{text-transform:uppercase;font-size:12px;font-weight:700;letter-spacing:1px;border-radius:5px;padding:5px 10px;background:#e5e9ed}.pass{background:#daf0e1;color:#20583d}.fail{background:#fce2de;color:#9a3026}.warn{background:#fff0cb;color:#7c570e}
+a{color:#206a51}table{width:100%;border-collapse:collapse;text-align:left}td,th{padding:15px 10px;border-bottom:1px solid #e4e9e5}th{font-size:12px;color:#64776d;text-transform:uppercase}
+small{display:block;font-size:11px}code{font-size:12px;overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f4f7f5;padding:16px;border-radius:6px;font-size:13px}
+details{border-top:1px solid #dde3de;padding:12px 0}summary{cursor:pointer}.table{overflow:auto}canvas{width:100%}footer{font-size:12px}
+@media(max-width:700px){header,main,footer{padding:18px}.intro{display:block}h1{font-size:36px}.intro form{min-width:0}header span{display:none}.row{align-items:flex-start}section{padding:16px}}

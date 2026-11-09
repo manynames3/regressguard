@@ -1,0 +1,19 @@
+{% extends "base.html" %}{% block content %}
+<p><a href="/">← Run history</a></p><div class="row"><h1>{{ run.suite_name }}</h1><span class="verdict {{ run.verdict }}">{{ run.verdict }}</span></div>
+<p>{{ run.reason or "Run incomplete" }}</p><code>{{ run.id }}</code>
+{% if run.aggregate_score is defined %}<h2>{{ "%.2f"|format(run.aggregate_score) }} / 100</h2><p>Change {{ run.aggregate_delta if run.aggregate_delta is not none else "uncompared" }} points</p>{% endif %}
+<p>Baseline <code>{{ run.baseline_id or "none" }}</code></p>
+<button id="promote" data-run="{{ run.id }}">Accept as baseline</button><p id="status" role="status"></p>
+<section><h2>Prompt and model change</h2><p>Before {{ run.baseline_target }}</p><p>After {{ run.target }}</p><pre>{{ run.prompt_diff }}</pre></section>
+{% for case in run.cases %}<section><div class="row"><h2>{{ case.id }}</h2><span>{{ case.severity }} · {{ case.passed }}/{{ case.total }}</span></div>
+<p>{{ case.expected_behavior }}</p>
+{% for d in run.deltas or [] if d.id == case.id %}<p>Before {{ d.old }}/{{ d.old_total }} → after {{ d.new }}/{{ d.total }}</p>{% endfor %}
+{% for sample in case.samples or [] %}<details><summary>Attempt {{ sample.attempt + 1 }} · {{ "%.1f"|format(sample.latency_ms) }} ms · tokens {{ sample.tokens_used }} ({{ sample.usage_source }})</summary>
+<pre>{{ sample.output }}</pre>{% if sample.error %}<p>{{ sample.error }}</p>{% endif %}
+<ul>{% for check in sample.checks %}<li>{{ check.type }} · <strong>{{ check.status }}</strong> · {{ check.reason }} {% if check.score is not none %}({{ check.score }}){% endif %}</li>{% endfor %}</ul></details>{% endfor %}</section>{% endfor %}
+<section><h2>Provenance</h2><pre>{{ run.git|tojson(indent=2) }}
+Prompt SHA-256 {{ run.prompt_hash }}
+Contract {{ run.contract_hash }}
+Provider {{ run.provider }}
+{{ run.contract.semantic|tojson(indent=2) }}</pre></section>
+{% endblock %}

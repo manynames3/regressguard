@@ -1,0 +1,90 @@
+# Fictional/sample data for an independent portfolio project.
+schema_version: 1
+data_label: fictional_sample
+policy:
+  aggregate_drop_points: 5
+id: summarizer
+name: Short text summarizer
+feature:
+  prompt: prompts/summarizer/v1.txt
+  prompt_version: v1
+  model: mock/summarizer-v1
+  generation:
+    temperature: 0
+cases:
+- id: summary-1
+  input: The outage affected 12 accounts. Recovery is ongoing.
+  expected_behavior: The outage affected 12 accounts.
+  severity: standard
+  checks:
+  - type: exact_match
+    expected: The outage affected 12 accounts.
+  - type: contains
+    keywords:
+    - outage
+  - type: regex
+    pattern: ^[A-Z].*\.$
+  - type: semantic_similarity
+    reference: The outage affected 12 accounts.
+    threshold: 0.8
+  - type: llm_judge
+    rubric: 'Preserve the supplied reference: The outage affected 12 accounts.'
+    rubric_version: v1
+    threshold: 0.8
+- id: summary-2
+  input: The refund was not approved. The review continues.
+  expected_behavior: The refund was not approved.
+  severity: standard
+  checks:
+  - type: exact_match
+    expected: The refund was not approved.
+  - type: contains
+    keywords:
+    - refund
+  - type: regex
+    pattern: ^[A-Z].*\.$
+  - type: semantic_similarity
+    reference: The refund was not approved.
+    threshold: 0.8
+  - type: llm_judge
+    rubric: 'Preserve the supplied reference: The refund was not approved.'
+    rubric_version: v1
+    threshold: 0.8
+- id: summary-3
+  input: The release is scheduled for Friday. Testing finished.
+  expected_behavior: The release is scheduled for Friday.
+  severity: standard
+  checks:
+  - type: exact_match
+    expected: The release is scheduled for Friday.
+  - type: contains
+    keywords:
+    - release
+  - type: regex
+    pattern: ^[A-Z].*\.$
+  - type: semantic_similarity
+    reference: The release is scheduled for Friday.
+    threshold: 0.8
+  - type: llm_judge
+    rubric: 'Preserve the supplied reference: The release is scheduled for Friday.'
+    rubric_version: v1
+    threshold: 0.8
+- id: summary-4
+  input: The customer requested a password reset. No breach was reported.
+  expected_behavior: The customer requested a password reset.
+  severity: standard
+  checks:
+  - type: exact_match
+    expected: The customer requested a password reset.
+  - type: contains
+    keywords:
+    - customer
+  - type: regex
+    pattern: ^[A-Z].*\.$
+  - type: semantic_similarity
+    reference: The customer requested a password reset.
+    threshold: 0.8
+  - type: llm_judge
+    rubric: 'Preserve the supplied reference: The customer requested a password reset.'
+    rubric_version: v1
+    threshold: 0.8

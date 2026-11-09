@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling==1.29.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "regressguard"
+version = "0.1.0"
+description = "Local-first LLM regression evidence and CI gate"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "fastapi==0.162.2", "pydantic==2.14.3", "sqlalchemy==2.1.8", "jinja2==3.1.6",
+  "uvicorn==0.54.0", "pyyaml==6.0.3", "jsonschema==4.26.0", "httpx==0.28.1", "psycopg[binary]==3.3.8", "regex==2026.11.9"
+]
+[project.optional-dependencies]
+embeddings = ["sentence-transformers"]
+[dependency-groups]
+dev = ["pytest==9.2.0", "ruff==0.17.4"]
+
+[project.scripts]
+regressguard = "regressguard.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["regressguard", "api", "demo"]
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]

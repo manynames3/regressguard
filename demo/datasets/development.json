@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "split": "development",
+  "data_label": "fictional_sample",
+  "provenance": "Authored synthetic reference/candidate pairs. Labels express the stated factual contract. No hosted model outputs or customer data.",
+  "cases": [
+    {"id":"exact","reference":"The refund was approved.","candidate":"The refund was approved.","acceptable":true,"reason":"Same statement."},
+    {"id":"case","reference":"The refund was approved.","candidate":"the refund was approved","acceptable":true,"reason":"Case and punctuation preserve the fact."},
+    {"id":"count","reference":"The outage affected 12 accounts.","candidate":"The outage affected 12 accounts.","acceptable":true,"reason":"Same quantity and event."},
+    {"id":"negation","reference":"The refund was approved.","candidate":"The refund was never approved.","acceptable":false,"reason":"Reverses approval."},
+    {"id":"number","reference":"The outage affected 12 accounts.","candidate":"The outage affected 120 accounts.","acceptable":false,"reason":"Changes the affected count."},
+    {"id":"extra","reference":"The refund was approved.","candidate":"The refund was approved for 120 accounts.","acceptable":false,"reason":"Invents a quantity."},
+    {"id":"unrelated","reference":"The refund was approved.","candidate":"A satellite entered orbit.","acceptable":false,"reason":"Does not preserve the reference fact."},
+    {"id":"punctuation","reference":"The refund was not approved.","candidate":"The refund was not approved!","acceptable":true,"reason":"Preserves explicit negation."},
+    {"id":"format-number","reference":"The outage affected 1000 accounts.","candidate":"The outage affected 1,000 accounts.","acceptable":true,"reason":"Equivalent numeric formatting."},
+    {"id":"omission","reference":"The outage affected 12 accounts.","candidate":"The outage affected accounts.","acceptable":false,"reason":"Omits a required number."}
+  ]
+}

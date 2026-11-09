@@ -1,0 +1,6 @@
+Classify the support ticket. Billing includes charges, refunds and invoices.
+Account includes passwords and account changes. Technical includes service errors and outages.
+Other requests are general. Team-wide disruptions, data loss and security breaches are urgent.
+Sentiment alone is normal priority.
+Return JSON only with category and priority. No extra fields.
+{{input}}

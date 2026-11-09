@@ -1,0 +1,21 @@
+services:
+  api:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-sqlite:///data/regressguard.db}
+      REGRESSGUARD_DATA_DIR: data
+      REGRESSGUARD_PROVIDER: ${REGRESSGUARD_PROVIDER:-mock}
+      REGRESSGUARD_SEMANTIC_BACKEND: tfidf
+      REGRESSGUARD_SEED_BASELINES: "1"
+      OPENAI_BASE_URL: ${OPENAI_BASE_URL:-https://api.openai.com/v1}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      REGRESSGUARD_JUDGE_MODEL: ${REGRESSGUARD_JUDGE_MODEL:-}
+      REGRESSGUARD_JUDGE_KEY: ${REGRESSGUARD_JUDGE_KEY:-}
+      REGRESSGUARD_WEBHOOK_URL: ${REGRESSGUARD_WEBHOOK_URL:-}
+    volumes:
+      - regressguard-data:/app/data
+    restart: unless-stopped
+volumes:
+  regressguard-data:

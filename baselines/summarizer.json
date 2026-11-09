@@ -1,0 +1,780 @@
+{
+  "schema_version": 1,
+  "report": {
+    "id": "eddaa444-3cff-455c-ba45-98b7ea7bd802",
+    "suite_id": "summarizer",
+    "suite_name": "Short text summarizer",
+    "data_label": "fictional_sample",
+    "timestamp": "2026-11-09T03:10:02.414467+00:00",
+    "status": "complete",
+    "verdict": "warn",
+    "exit_code": 0,
+    "suite": {
+      "schema_version": 1,
+      "id": "summarizer",
+      "name": "Short text summarizer",
+      "data_label": "fictional_sample",
+      "feature": {
+        "prompt": "prompts/summarizer/v1.txt",
+        "prompt_version": "v1",
+        "model": "mock/summarizer-v1",
+        "generation": {
+          "temperature": 0
+        }
+      },
+      "policy": {
+        "aggregate_drop_points": 5.0
+      },
+      "cases": [
+        {
+          "id": "summary-1",
+          "input": "The outage affected 12 accounts. Recovery is ongoing.",
+          "expected_behavior": "The outage affected 12 accounts.",
+          "severity": "standard",
+          "checks": [
+            {
+              "type": "exact_match",
+              "expected": "The outage affected 12 accounts.",
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "contains",
+              "expected": null,
+              "keywords": [
+                "outage"
+              ],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "regex",
+              "expected": null,
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": "^[A-Z].*\\.$",
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "semantic_similarity",
+              "expected": null,
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": "The outage affected 12 accounts.",
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "llm_judge",
+              "expected": null,
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": "Preserve the supplied reference: The outage affected 12 accounts.",
+              "rubric_version": "v1"
+            }
+          ]
+        },
+        {
+          "id": "summary-2",
+          "input": "The refund was not approved. The review continues.",
+          "expected_behavior": "The refund was not approved.",
+          "severity": "standard",
+          "checks": [
+            {
+              "type": "exact_match",
+              "expected": "The refund was not approved.",
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "contains",
+              "expected": null,
+              "keywords": [
+                "refund"
+              ],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "regex",
+              "expected": null,
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": "^[A-Z].*\\.$",
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "semantic_similarity",
+              "expected": null,
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": "The refund was not approved.",
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "llm_judge",
+              "expected": null,
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": "Preserve the supplied reference: The refund was not approved.",
+              "rubric_version": "v1"
+            }
+          ]
+        },
+        {
+          "id": "summary-3",
+          "input": "The release is scheduled for Friday. Testing finished.",
+          "expected_behavior": "The release is scheduled for Friday.",
+          "severity": "standard",
+          "checks": [
+            {
+              "type": "exact_match",
+              "expected": "The release is scheduled for Friday.",
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "contains",
+              "expected": null,
+              "keywords": [
+                "release"
+              ],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "regex",
+              "expected": null,
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": "^[A-Z].*\\.$",
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "semantic_similarity",
+              "expected": null,
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": "The release is scheduled for Friday.",
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "llm_judge",
+              "expected": null,
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": "Preserve the supplied reference: The release is scheduled for Friday.",
+              "rubric_version": "v1"
+            }
+          ]
+        },
+        {
+          "id": "summary-4",
+          "input": "The customer requested a password reset. No breach was reported.",
+          "expected_behavior": "The customer requested a password reset.",
+          "severity": "standard",
+          "checks": [
+            {
+              "type": "exact_match",
+              "expected": "The customer requested a password reset.",
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "contains",
+              "expected": null,
+              "keywords": [
+                "customer"
+              ],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "regex",
+              "expected": null,
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": "^[A-Z].*\\.$",
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "semantic_similarity",
+              "expected": null,
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": "The customer requested a password reset.",
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "llm_judge",
+              "expected": null,
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": "Preserve the supplied reference: The customer requested a password reset.",
+              "rubric_version": "v1"
+            }
+          ]
+        }
+      ]
+    },
+    "contract": {
+      "suite_id": "summarizer",
+      "cases": [
+        {
+          "id": "summary-1",
+          "input": "The outage affected 12 accounts. Recovery is ongoing.",
+          "expected_behavior": "The outage affected 12 accounts.",
+          "severity": "standard",
+          "checks": [
+            {
+              "type": "exact_match",
+              "expected": "The outage affected 12 accounts.",
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "contains",
+              "expected": null,
+              "keywords": [
+                "outage"
+              ],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "regex",
+              "expected": null,
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": "^[A-Z].*\\.$",
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "semantic_similarity",
+              "expected": null,
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": "The outage affected 12 accounts.",
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "llm_judge",
+              "expected": null,
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": "Preserve the supplied reference: The outage affected 12 accounts.",
+              "rubric_version": "v1"
+            }
+          ]
+        },
+        {
+          "id": "summary-2",
+          "input": "The refund was not approved. The review continues.",
+          "expected_behavior": "The refund was not approved.",
+          "severity": "standard",
+          "checks": [
+            {
+              "type": "exact_match",
+              "expected": "The refund was not approved.",
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "contains",
+              "expected": null,
+              "keywords": [
+                "refund"
+              ],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "regex",
+              "expected": null,
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": "^[A-Z].*\\.$",
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "semantic_similarity",
+              "expected": null,
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": "The refund was not approved.",
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "llm_judge",
+              "expected": null,
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": "Preserve the supplied reference: The refund was not approved.",
+              "rubric_version": "v1"
+            }
+          ]
+        },
+        {
+          "id": "summary-3",
+          "input": "The release is scheduled for Friday. Testing finished.",
+          "expected_behavior": "The release is scheduled for Friday.",
+          "severity": "standard",
+          "checks": [
+            {
+              "type": "exact_match",
+              "expected": "The release is scheduled for Friday.",
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "contains",
+              "expected": null,
+              "keywords": [
+                "release"
+              ],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "regex",
+              "expected": null,
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": "^[A-Z].*\\.$",
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "semantic_similarity",
+              "expected": null,
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": "The release is scheduled for Friday.",
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "llm_judge",
+              "expected": null,
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": "Preserve the supplied reference: The release is scheduled for Friday.",
+              "rubric_version": "v1"
+            }
+          ]
+        },
+        {
+          "id": "summary-4",
+          "input": "The customer requested a password reset. No breach was reported.",
+          "expected_behavior": "The customer requested a password reset.",
+          "severity": "standard",
+          "checks": [
+            {
+              "type": "exact_match",
+              "expected": "The customer requested a password reset.",
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "contains",
+              "expected": null,
+              "keywords": [
+                "customer"
+              ],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "regex",
+              "expected": null,
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": "^[A-Z].*\\.$",
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "semantic_similarity",
+              "expected": null,
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": "The customer requested a password reset.",
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": null,
+              "rubric_version": "v1"
+            },
+            {
+              "type": "llm_judge",
+              "expected": null,
+              "keywords": [],
+              "mode": "all",
+              "case_sensitive": true,
+              "pattern": null,
+              "schema": null,
+              "reference": null,
+              "threshold": 0.8,
+              "preserve_facts": true,
+              "rubric": "Preserve the supplied reference: The customer requested a password reset.",
+              "rubric_version": "v1"
+            }
+          ]
+        }
+      ],
+      "policy": {
+        "aggregate_drop_points": 5.0
+      },
+      "runs": 3,
+      "semantic": {
+        "backend": "tfidf",
+        "algorithm": "suite-reference-tfidf-v2",
+        "corpus": "488af2643ad468f0474bb5e626e6ba845b23ee6d0048bb071cee7f420f5351b5"
+      },
+      "judge": null,
+      "evaluator_version": "2"
+    },
+    "contract_hash": "e2c160dc02522a5fdf936d947054e69d89e09ecf94b95244ed1d710f78e0b99c",
+    "runs": 3,
+    "git": {
+      "sha": null,
+      "dirty": null
+    },
+    "provider": "mock",
+    "prompt_text": "Summarize the text in one sentence. Preserve the facts, numbers and negations.\n{{input}}\n",
+    "prompt_hash": "c28b44ad5646ee464bc80185fa96ecea04d9b2cef7e1cd817a8b3663805bb9e4",
+    "target": {
+      "prompt_version": "v1",
+      "model": "mock/summarizer-v1",
+      "generation": {
+        "temperature": 0
+      }
+    },
+    "baseline_id": null,
+    "baseline_target": null,
+    "cases": [
+      {
+        "id": "summary-1",
+        "severity": "standard",
+        "expected_behavior": "The outage affected 12 accounts.",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "id": "summary-2",
+        "severity": "standard",
+        "expected_behavior": "The refund was not approved.",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "id": "summary-3",
+        "severity": "standard",
+        "expected_behavior": "The release is scheduled for Friday.",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "id": "summary-4",
+        "severity": "standard",
+        "expected_behavior": "The customer requested a password reset.",
+        "passed": 3,
+        "total": 3
+      }
+    ],
+    "reason": "Reduced quality or partial check coverage",
+    "aggregate_score": 100.0,
+    "aggregate_delta": null,
+    "comparison": "uncompared",
+    "deltas": [
+      {
+        "id": "summary-1",
+        "old": null,
+        "old_total": null,
+        "new": 3,
+        "total": 3,
+        "delta_points": null,
+        "critical_failure": false
+      },
+      {
+        "id": "summary-2",
+        "old": null,
+        "old_total": null,
+        "new": 3,
+        "total": 3,
+        "delta_points": null,
+        "critical_failure": false
+      },
+      {
+        "id": "summary-3",
+        "old": null,
+        "old_total": null,
+        "new": 3,
+        "total": 3,
+        "delta_points": null,
+        "critical_failure": false
+      },
+      {
+        "id": "summary-4",
+        "old": null,
+        "old_total": null,
+        "new": 3,
+        "total": 3,
+        "delta_points": null,
+        "critical_failure": false
+      }
+    ],
+    "ended_at": "2026-11-09T03:10:02.432352+00:00"
+  },
+  "sha256": "340712bc6823ad1b5bbcd98aac7728d1844add882e26f871b1064c01673290d9"
+}

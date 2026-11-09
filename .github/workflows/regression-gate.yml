@@ -1,0 +1,98 @@
+name: Regression gate
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  gate:
+    name: RegressGuard gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      REGRESSGUARD_PROVIDER: mock
+      REGRESSGUARD_SEMANTIC_BACKEND: tfidf
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.12"
+      - run: pip install uv==0.8.13
+      - run: uv sync --locked
+      - name: Compare affected suites against accepted base evidence
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before || 'HEAD~1' }}
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: uv run --no-sync regressguard ci --base "$BASE_SHA" --head HEAD
+
+      - name: Preserve regression reports
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: regression-evidence
+          path: data/ci/
+          if-no-files-found: ignore
+
+  checks:
+    name: Engine tests and calibration
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      REGRESSGUARD_PROVIDER: mock
+      REGRESSGUARD_SEMANTIC_BACKEND: tfidf
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.12"
+      - run: pip install uv==0.8.13
+      - run: uv sync --locked
+      - run: uv run --no-sync ruff check .
+      - run: uv run --no-sync pytest -q
+      - name: Measure held-out evaluator behavior
+        run: uv run --no-sync python -m demo.calibrate
+      - name: Preserve calibration evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: evaluator-calibration
+          path: data/calibration/
+          if-no-files-found: ignore
+
+  postgres:
+    name: PostgreSQL persistence
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: regressguard
+          POSTGRES_PASSWORD: ci-only-ephemeral
+          POSTGRES_DB: regressguard
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.12"
+      - run: pip install uv==0.8.13
+      - run: uv sync --locked
+      - name: Verify database portability
+        env:
+          DATABASE_URL: postgresql://regressguard:ci-only-ephemeral@localhost:5432/regressguard
+          REGRESSGUARD_SEMANTIC_BACKEND: tfidf
+        run: uv run --no-sync python demo/postgres_smoke.py

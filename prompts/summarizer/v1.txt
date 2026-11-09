@@ -1,0 +1,2 @@
+Summarize the text in one sentence. Preserve the facts, numbers and negations.
+{{input}}
