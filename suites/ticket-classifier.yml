@@ -7,7 +7,7 @@ id: ticket-classifier
 name: Support ticket classifier
 feature:
   prompt: prompts/classifier/v1.txt
-  prompt_version: v1
+  prompt_version: v1-ci-proof
   model: mock/ticket-classifier-v1
   generation:
     temperature: 0
