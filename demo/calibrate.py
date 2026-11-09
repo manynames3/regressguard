@@ -1,9 +1,11 @@
 """Measure a fixed evaluator on fictional labeled outputs; select thresholds on development only."""
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 
+from regressguard import checks
 from regressguard.checks import Semantic, evaluate
 from regressguard.runner import EVALUATOR_VERSION
 from regressguard.suites import Check, digest
@@ -81,6 +83,7 @@ def calibration(directory):
         "schema_version": 1,
         "data_label": "fictional_sample",
         "evaluator_version": EVALUATOR_VERSION,
+        "implementation_sha256": hashlib.sha256(Path(checks.__file__).read_bytes()).hexdigest(),
         "semantic": semantic.identity,
         "development_sha256": digest(development),
         "holdout_sha256": digest(holdout),

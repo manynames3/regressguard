@@ -11,8 +11,11 @@ from regressguard.suites import Suite
 
 if __name__ in ("__main__", "builtins"):
     package = json.load(sys.stdin)
+    observations = {case["id"]: case for case in package["observations"]["cases"]}
     samples = iter(
-        sample for case in package["observations"]["cases"] for sample in case["samples"]
+        sample
+        for case in package["suite"]["cases"]
+        for sample in observations[case["id"]]["samples"]
     )
 
     def replay_response(*args):

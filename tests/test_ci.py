@@ -129,3 +129,31 @@ def test_workflow_contract(root):
     assert any("regressguard ci" in step.get("run", "") for step in steps)
     assert any(step.get("if") == "always()" for step in steps)
     assert jobs["gate"]["name"] == "RegressGuard gate"
+
+
+def test_accepted_replay_preserves_case_mapping_for_green_and_intermittent(
+    root, tmp_path, monkeypatch
+):
+    repo, _ = repository(root, tmp_path)
+    monkeypatch.setenv("REGRESSGUARD_CI_OUTPUT", str(tmp_path / "ci"))
+    for name in ("regressguard", "demo"):
+        shutil.copytree(root / name, repo / name, ignore=shutil.ignore_patterns("__pycache__"))
+    git(repo, "add", ".")
+    git(repo, "commit", "-qm", "accepted implementation")
+    base = git(repo, "rev-parse", "HEAD")
+    path = repo / "suites/ticket-classifier.yml"
+    original = path.read_text()
+    path.write_text(original.replace("prompt_version: v1", "prompt_version: v1-proof"))
+    git(repo, "add", ".")
+    git(repo, "commit", "-qm", "healthy target version")
+    assert quiet_gate(repo, base) == 0
+    path.write_text(
+        original.replace("mock/ticket-classifier-v1", "mock/ticket-classifier-intermittent")
+    )
+    git(repo, "add", ".")
+    git(repo, "commit", "-qm", "intermittent target")
+    assert quiet_gate(repo, base) == 1
+    report = json.loads((tmp_path / "ci/report.json").read_text())["reports"][0]
+    shared = next(c for c in report["cases"] if c["id"] == "shared-outage")
+    assert shared["passed"] == 2
+    assert all(c["passed"] == 3 for c in report["cases"] if c["id"] != "shared-outage")

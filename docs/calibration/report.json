@@ -2,6 +2,7 @@
   "schema_version": 1,
   "data_label": "fictional_sample",
   "evaluator_version": "2",
+  "implementation_sha256": "fc491f4d22b02e5f1d34296731ed7227303838a1274091a30378ec8211aa7d39",
   "semantic": {
     "backend": "tfidf",
     "algorithm": "suite-reference-tfidf-v2",
@@ -1634,6 +1635,5 @@
         }
       }
     ]
-  },
-  "implementation_sha256": "fc491f4d22b02e5f1d34296731ed7227303838a1274091a30378ec8211aa7d39"
+  }
 }

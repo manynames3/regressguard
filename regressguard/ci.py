@@ -63,7 +63,7 @@ def accepted_replay(suite, new_root, old_root, reference):
     if any(s.get("error") for c in observations["cases"] for s in c["samples"]):
         return observations, observations
     accepted_definition = suite.model_dump(by_alias=True)
-    accepted_definition["cases"] = reference["contract"]["cases"]
+    accepted_definition["cases"] = reference["suite"]["cases"]
     package = {
         "suite": accepted_definition,
         "reference": reference,

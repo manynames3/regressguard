@@ -148,3 +148,27 @@ def test_baseline_reference_is_frozen_during_execution(root, store, monkeypatch)
     observed = run(suite, root, store, "latest")
     assert observed["baseline_id"] == original["id"]
     assert store.latest(suite.id)["id"] == replacement["id"]
+
+
+def test_historical_snapshot_remains_inspectable_but_cannot_compare(root, store):
+    suite = load_suite(root / "suites/ticket-classifier.yml")
+    report = run(suite, root, store)
+    historical = export_snapshot(report)
+    old = historical["report"]
+    old["contract"]["evaluator_version"] = "1"
+    old["contract"]["semantic"]["algorithm"] = "suite-reference-tfidf-v1"
+    for collection in (old["suite"]["cases"], old["contract"]["cases"]):
+        for case in collection:
+            for check in case["checks"]:
+                check.pop("preserve_facts")
+    old["contract_hash"] = digest(old["contract"])
+    historical["sha256"] = digest(old)
+    assert validate_snapshot(historical)["id"] == report["id"]
+    # New UUID avoids replacing the original immutable run.
+    import uuid
+
+    old["id"] = str(uuid.uuid4())
+    historical["sha256"] = digest(old)
+    store.import_snapshot(historical)
+    with pytest.raises(ValueError, match="Incompatible"):
+        run(suite, root, store, "latest")
