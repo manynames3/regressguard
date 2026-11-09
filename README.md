@@ -158,7 +158,7 @@ Reproduce the Actions path in a Git checkout:
 uv run regressguard ci --base <accepted-commit-sha> --head HEAD
 ```
 
-The command writes `data/ci/report.json` and `summary.md`. In CI it appends to `GITHUB_STEP_SUMMARY`. To demonstrate a hosted failure, commit a prompt edit replacing `Return JSON only` with `Return plain text`, open a PR, inspect the failing required job, then restore the instruction and push the fix. Hosted runs require publishing this workspace to a GitHub repository.
+The command writes `data/ci/report.json` and `summary.md`. In CI it appends to `GITHUB_STEP_SUMMARY`. To demonstrate a hosted failure, commit a prompt edit replacing `Return JSON only` with `Return plain text`, open a PR, inspect the failing required job, then restore the instruction and push the fix. The private repository now has observed red/green hosted runs. See [hosted CI proof](docs/CI_PROOF.md) for the PR, run links and downloaded artifact evidence.
 
 ## Configuration and optional live calls
 
@@ -207,9 +207,10 @@ Each completed fail transactionally creates one SQL alert payload, appends the s
 uv sync --locked
 uv run ruff check .
 uv run pytest -q
+uv run python -m demo.transport_smoke
 ```
 
-The default pytest suite blocks network sockets and uses temporary SQLite databases. It covers each check, skipped and invalid judges, strict JSON, threshold boundaries, critical failures, baseline round-trips, CLI process exits, API parity and temporary Git histories with broken prompts and edited evidence. Live transport uses a fake HTTP transport. PostgreSQL runs in a separate integration job.
+The default pytest suite blocks network sockets and uses temporary SQLite databases. It covers each check, skipped and invalid judges, strict JSON, threshold boundaries, critical failures, baseline round-trips, CLI process exits, API parity and temporary Git histories with broken prompts and edited evidence. Unit tests use a fake HTTP transport. The separate transport smoke starts a local HTTP server and exercises actual requests for generation, judging, auth errors, malformed responses, missing usage and identical webhook/SQL/JSONL payloads. Its responses are scripted fixtures. It uses no paid API or external service. PostgreSQL runs in a separate integration job.
 
 ## Limitations
 

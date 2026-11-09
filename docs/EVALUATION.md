@@ -42,3 +42,7 @@ In Compose, prefix commands with `docker compose exec api .venv/bin/` and omit `
 ## Interpreting repeated samples
 
 Three samples can expose an intermittent defect. They give weak precision about an unknown failure probability. The demo repeats are scripted and correlated. The release policy remains a specified critical-case gate and an exact observed-score threshold. It makes no statistical-significance claim. Calibration evaluates individual labeled outputs; it does not estimate the false-block rate of a deployment workflow.
+
+## HTTP integration evidence
+
+The transport smoke command starts a loopback server and sends real HTTP requests through the compatible client and webhook delivery code. It checks generation, a baseline comparison, judging, missing usage, auth errors, malformed envelopes and exact alert-payload parity across HTTP, SQL and JSONL. It also asserts that the local test credential is absent from persisted reports and alerts. These are scripted server responses, with no claim of hosted-model evaluation. The separate command keeps default pytest network-free.

@@ -1,0 +1,412 @@
+{
+  "schema_version": 1,
+  "data_label": "fictional_sample",
+  "repository_visibility": "private",
+  "pr_url": "https://github.com/manynames3/regressguard/pull/1",
+  "red": {
+    "actions_url": "https://github.com/manynames3/regressguard/actions/runs/42555751538",
+    "artifact_sha256": "d7b5d6a6e4aee17f89ba442d3557ed828ff85b9af467cda77daa2789dbb81d63",
+    "base_sha": "776e7c2d454bb5aa6132f3c5ac64aa8846dd9799",
+    "tested_sha": "dfacb1f5d5ec5240beefa5ef7e7cdf19a24ad712",
+    "pr_head": "084ea34c81770ed2d29e07a8bd1b50e101a7382c",
+    "run_id": "aa0e6ad6-2686-45cc-a380-cbf9293ad50a",
+    "baseline_id": "a1a4b9f1-cf89-4e86-a406-3c1ed37d8052",
+    "verdict": "fail",
+    "exit_code": 1,
+    "aggregate_score": 98.33333333333333,
+    "aggregate_delta": -1.6666666666666667,
+    "target": {
+      "prompt_version": "v1",
+      "model": "mock/ticket-classifier-intermittent",
+      "generation": {
+        "temperature": 0,
+        "max_tokens": 120
+      }
+    },
+    "deltas": [
+      {
+        "id": "refund",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "invoice",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "double-charge",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "angry",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "spanish",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "password",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "account",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "spanish-password",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "deletion",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "crash",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "error",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "shared-outage",
+        "old": 3,
+        "old_total": 3,
+        "new": 2,
+        "total": 3,
+        "delta_points": -33.333333333333336,
+        "critical_failure": true
+      },
+      {
+        "id": "offline",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "loss",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "breach",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "vague",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "conflicting",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "not-urgent",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "injection",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "thanks",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      }
+    ]
+  },
+  "green": {
+    "actions_url": "https://github.com/manynames3/regressguard/actions/runs/42555872612",
+    "artifact_sha256": "865d6ec26056018f8a23b9573376c0d97251fb34911a98b06c36cbc000f41732",
+    "base_sha": "776e7c2d454bb5aa6132f3c5ac64aa8846dd9799",
+    "tested_sha": "d13f9b0569544f0a759a4ec332c5cd199bb72e85",
+    "pr_head": "7c52a218fc86034c2356ba2fb2ba33def5eefa93",
+    "run_id": "479f04cf-3c2d-4015-a7b0-d6badafb39a2",
+    "baseline_id": "a1a4b9f1-cf89-4e86-a406-3c1ed37d8052",
+    "verdict": "pass",
+    "exit_code": 0,
+    "aggregate_score": 100.0,
+    "aggregate_delta": 0.0,
+    "target": {
+      "prompt_version": "v1-ci-proof",
+      "model": "mock/ticket-classifier-v1",
+      "generation": {
+        "temperature": 0,
+        "max_tokens": 120
+      }
+    },
+    "deltas": [
+      {
+        "id": "refund",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "invoice",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "double-charge",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "angry",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "spanish",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "password",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "account",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "spanish-password",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "deletion",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "crash",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "error",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "shared-outage",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "offline",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "loss",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "breach",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "vague",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "conflicting",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "not-urgent",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "injection",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      },
+      {
+        "id": "thanks",
+        "old": 3,
+        "old_total": 3,
+        "new": 3,
+        "total": 3,
+        "delta_points": 0.0,
+        "critical_failure": false
+      }
+    ]
+  }
+}
